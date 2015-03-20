@@ -1,0 +1,50 @@
+<!---	У объекта есть свойство className, которое хранит список «классов» - слов, разделенных пробелами:
+
+	var obj = {
+	  className: 'open menu'
+	}
+	Напишите функцию removeClass(obj, cls), которая удаляет класс cls, если он есть:
+
+	removeClass(obj, 'open'); // obj.className='menu'
+	removeClass(obj, 'blabla'); // без изменений (нет такого класса) --->
+
+<!DOCTYPE HTML>
+<html>
+	<head> 
+		<meta charset="utf-8"> 
+		<style>
+			.class1 {
+			font-style: italic;
+		}
+		.class2 {
+			color:red;
+		}
+		</style>
+	</head>
+	<body>
+	
+		<div id="myId" class="class1 class2 class3">
+			This is my name
+		</div>		
+		
+		<script>
+			alert('pause');			
+			var divObj = document.getElementById("myId");			
+			function removeClass(obj, nameofclass) 
+			{				
+				var myArray = obj.className.split(" ");					
+				for( var i=0; ; ++i)
+				{			
+					var indexByName = myArray.indexOf(nameofclass);					
+					if(indexByName === -1) break;					
+					myArray.splice(indexByName, 1);
+				}	
+				obj.className = myArray.join(' ');						
+				return obj;
+			}      			
+			removeClass(divObj, "class2");
+			console.log( divObj );    
+		</script>
+		
+	</body>
+</html>
