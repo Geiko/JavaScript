@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+	<head> 
+		<meta charset="utf-8"> 
+	</head>
+	<body>
+
+    <script>
+      
+      var nameComparer = function ( obj1, obj2 )
+      {
+        	if ( obj1.name > obj2.name)
+       	 	{
+          		return 1;
+        	}
+        
+        	if ( obj1.name < obj2.name)
+        	{
+        	  	return -1;
+       		}
+        
+       	 	return 0;
+      }
+      
+      var priceComparer = function ( obj1, obj2 )
+      {
+        	if ( obj1.price > obj2.price)
+       	 	{
+          		return 1;
+        	}
+        
+        	if ( obj1.price < obj2.price)
+        	{
+        	  	return -1;
+       		}
+        
+       	 	return 0;
+      }
+      
+      
+      var myObj = {name: 'Ford', price: 500000};
+      
+      var myArray = [ myObj,  
+                     {name: 'Opel', price: 700000},
+                     {name: 'BMW', price: 1000000}]
+      
+      
+      console.log(myArray);
+      myArray.sort( priceComparer );
+      console.log(myArray);
+
+    </script>
+
+  </body>
+</html>
