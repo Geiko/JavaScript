@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+  	<head>   
+    <meta charset="utf-8">
+    <title>Functions</title>
+    <style>
+        .circle {
+          width: 100px;
+          height: 100px;
+          margin-top: 0;
+          margin-right: auto;
+          margin-bottom: 0;
+          margin-left: auto;
+          background-color: green;
+          border-radius: 50px;
+        }
+    </style>  
+  	</head>
+    <body>      
+      	<div class="circle"></div>  
+      	<script>        
+         
+            var  calc = function(num1, num2)
+            {              
+                var summ = 0;                
+                var argsCount = arguments.length;                
+                for(var i=0; i < argsCount; i++)
+                {
+                    var num = arguments[i];
+                    if(num == undefined)
+                    {
+                      	break;
+                    }
+                    summ += num; 
+                }                
+                return summ;                
+            }            
+			document.write(calc(1,2,4, 10, 15,1,1,1,1,1));       
+            
+            (function(arg)
+            {                        
+				var name = arg;				  
+				document.write(arguments[0]);
+					
+				var camelize =   function (str)
+				{
+					var wordArray = str.split("-");
+							  
+					for (var i=1; i<wordArray.length; i++) 
+					{
+						var firstCharacter = wordArray[i].charAt(0).toUpperCase();
+						var restOfWord = wordArray[i].slice(-wordArray[i].length + 1);
+			  
+						var result = firstCharacter + restOfWord;						
+						wordArray[i] = result;
+					}			
+					var resultStr = wordArray.join('');		 
+					return resultStr;
+				}					  
+				  
+				var normalizeValue = function (str) 
+				{
+					var getRawValue = str.split('');
+					getRawValue.pop();
+					return getRawValue.join('');
+				}         						  
+				var style = "background-color: blue;";
+				var styleKeyValue = style.split(": ");					 
+				var styleKey = camelize(styleKeyValue[0]);					 
+				var styleValue = normalizeValue(styleKeyValue[1]);					
+				var objectCollection = document.getElementsByClassName("circle");		
+				
+				if (objectCollection.length != 0) 
+				{
+					var firstElement = objectCollection[0];					   
+					document.write(firstElement.style[styleKey]);						
+					firstElement.style[styleKey] = styleValue;
+					document.write(firstElement.style[styleKey]);
+				}              
+            })("Holubkov leonid", "our hero");          
+        </script>
+  	</body>
+</html>
