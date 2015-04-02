@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head></head>
+	<body>
+		<script>
+		
+			function Vehicle(coordX, coordY)
+			{
+				if(Vehicle.prototype.count == undefined)
+				{
+					// инициализируем нулем если такого свойства еще нет
+					Vehicle.prototype.count = 0;
+				}				
+				
+				//добавляем еденицу при каждом вызове конструктора
+				Vehicle.prototype.count += 1;
+				
+				// инициализируем координаты
+				this.x = coordX;
+				this.y = coordY;
+				
+				// инициализируем количество колес по умолчанию
+				this.wheals = 0;
+				  
+				// функция передвижения
+				this.move = function (distansX, distansY)
+				{
+					this.x += distansX;
+					this.y += distansY;
+				}
+			}				  
+			  
+			// создаем новый тип "мотоцикл"
+			function Moto(coordX, coordY)
+			{
+				// вызываем родительский конструктор и создаем объект
+				var result = new Vehicle(coordX, coordY);
+				 
+				// инициализируем количество колес "реальное" имеющее смысл для такого типа средств передвижения
+				result.wheals = 2;
+				
+				return result;							   
+			}
+			  
+			// устанавливаем наследование
+			Moto.prototype = Vehicle.prototype			  
+				
+			//создаем объект мотоцикла
+			var moto = new Moto(10, 20);			  
+			  
+			console.log("moto, wheals:" + moto.wheals);			  
+			  
+			//создаем объект мотоцикла
+			var moto1 = new Moto(5, 2);
+			 
+			console.log("x: " + moto1.x," y: " + moto1.y);
+			  
+			//создаем объект мотоцикла
+			var moto3 = new Moto(4, 3);
+			  
+			// "двигаем" средство передвижения
+			moto1.move(10, 15);
+			console.log("x: " + moto1.x," y: " + moto1.y);
+			   
+			// количество средств передвижения
+			console.log("count:" + moto3.count);    	   
+		  
+		</script>
+	</body>
+</html>
