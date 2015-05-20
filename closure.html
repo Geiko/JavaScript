@@ -1,0 +1,82 @@
+<!-- 
+1) The battlefield is a field 8x8
+     - create js code to initialize the field.
+             - size of the cell is 30x30px
+             - structure: table,  div 
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+	<style>
+		.container
+		{
+			border: 1px solid black;   
+		}
+
+		.clearFloat{
+			clear: both; 
+		}
+
+		.cell{
+			border: 1px solid blue;
+			width: 30px;
+			height: 30px;
+			float: left;
+		}
+
+		.lastInRow{
+			background-color: red;
+			
+		}
+		.theEndCell{
+			clear: both; 
+			background: yellow;
+		}
+
+	</style>
+</head>
+    <body>
+		<div id="container" class="container" > 
+			<div class='clearFloat'>
+			</div> 
+		</div>
+
+		<script>
+				
+			var container = document.getElementById("container");
+
+			var index = 63;  
+
+			for(var j = 7; j >= 0; j--)
+			{
+				for(var i = 7; i >= 0; i--)
+				{
+					 var cell = document.createElement("DIV");
+					 cell.setAttribute("class", "cell");
+								 
+					 if (i == 0)
+					 {
+					   cell.setAttribute("class", "cell theEndCell");
+					 }
+					
+					var textnode = document.createTextNode(index);
+					
+					cell.appendChild(textnode);
+							 
+					var supprotingfunc = function(number){ return function(){ alert("I am number: " + number); } }            
+					cell.onclick =  supprotingfunc(index) 
+						 
+					console.log( container.childNodes[0]);
+					container.insertBefore(cell, container.childNodes[0]);
+					
+					index--;
+							   
+				}
+			}
+			
+		</script>
+	</body>	
+</html>
