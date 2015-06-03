@@ -1,0 +1,32 @@
+//    Site https://www.ukr.net/
+
+var parent = document.getElementById("news_list");
+
+//	1) Find all Header of news "Головне", "Полiтика" ...
+//	2) Set them a sequence number
+var array = parent.getElementsByTagName("h2");
+for( i = 0; i<array.length; ++i )
+{
+	var textNode = document.createTextNode (i + ". ");
+	array[i].insertBefore ( textNode, array[i].firstChild); 
+	array[i].setAttribute("style","border:5px solid red; background-color: yellow");
+}
+
+//	3) Change "news_list" sections places  randomly
+var arr = parent.getElementsByTagName("section");
+for( i = 0; i<arr.length; ++i )
+{ 
+	var randomPlace = Math.floor(Math.random() * (arr.length-1));
+	parent.insertBefore(parent.childNodes[i],parent.childNodes[randomPlace]);
+}
+
+//	4) Delete 3rd section 
+for( i = 0; i<arr.length; ++i )
+{ 
+	var a1 = arr[i].getElementsByTagName("h2")[0].firstChild.nodeValue;
+	if(+a1 == 3) 
+	{
+		arr[i].parentNode.removeChild(arr[i]);
+		break;
+	}
+}
