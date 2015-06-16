@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">	
+	<style>
+	
+		.categoryBase {
+		  border: 3px solid #fff;
+		  color: #fff;
+		  font-family: arial, sans-serif;
+		  width: 200px;
+		  height: 60px;
+		  
+		  font-size: 12px;
+		  text-align: center;
+		}
+
+		.categoryBase img {
+		  width: 30px;
+		  height: 30px;
+		  display: block;
+		  margin: 5px auto 3px;
+		}
+
+		.categoryBase p {
+		  margin: 0;
+		  padding: 0;
+		}
+
+
+		.category0 { 
+		  background-color: green; 
+		}
+
+		.category1 {      
+		  background-color: purple; 
+		}
+
+		.category2 {      
+		  background-color: red; 
+		}
+
+		.category3 { 
+		  background-color: yellow; 
+		}
+
+		.category4 { 
+		  background-color: blue; 
+		}
+
+		.container {
+		   max-width: 1030px;
+		}
+
+		.container a {
+			display: inline-block; 
+			text-decoration: none; 
+			
+		}
+
+		.specificCategory{
+			border-radius: 50px;
+			background: linear-gradient(to bottom right, #0000FF, #FFFF00);
+		}	
+	
+	</style>
+</head>
+<body>
+
+	<div id="container"></div>
+		
+    <script>
+//	1) Json var categories =   [ { category: 0}, { category: 1}, { category: 2}....  { category: 4},  { category: 1} ]
+//	2) Draw categories as rectangels with different colors which represents category.
+//	3) Extend data structure with details e.g.
+
+//	 { name : "backets", category: 0, 
+//	     details:{
+//         Url:"http://lopata.com",
+//         ShortDescription: "Very simple text about LOPATAS",
+//         picture: "http://nicePictureOfLopata.jpg"
+//     }
+//    },
+
+//4) Implement nice code to render product item content.
+//5) Implement nice visualization via css and HTML	
+	
+		var specificNumber = 3;				
+		   	
+		var items = [ 
+			{ name : "OSB", 
+			  category: 1,
+			  details: { 
+				Url:"http://lopata.com", 
+				ShortDescription: "Very simple text about LOPATAS", 
+				picture: "http://icons.iconarchive.com/icons/icons8/windows-8/128/Diy-Spade-icon.png" 
+			  }
+			}, 		
+			{ name : "OSB", 
+			  category: 1,
+			  details: { 
+				Url:"http://lopata.com", 
+				ShortDescription: "Very simple text about LOPATAS", 
+				picture: "http://icons.iconarchive.com/icons/icons8/windows-8/128/Diy-Spade-icon.png" 
+			  }
+			}, 		
+			{ name : "crockery",  
+			  category: 3,
+			  details: { 
+				Url:"http://lopata.com", 
+				ShortDescription: "Very simple text about LOPATAS", 
+				picture: "http://icons.iconarchive.com/icons/icons8/windows-8/128/Diy-Spade-icon.png" 
+			  }
+			},
+			{ name : "crockery",  
+			  category: 3,
+			  details: { 
+				Url:"http://lopata.com", 
+				ShortDescription: "Very simple text about LOPATAS", 
+				picture: "http://icons.iconarchive.com/icons/icons8/windows-8/128/Diy-Spade-icon.png" 
+			  }
+			},		
+			{ name : "crockery",  
+			  category: 2,
+			  details: { 
+				Url:"http://lopata.com", 
+				ShortDescription: "Very simple text about LOPATAS", 
+				picture: "http://icons.iconarchive.com/icons/icons8/windows-8/128/Diy-Spade-icon.png" 
+			  }
+			},
+			{ name : "crockery",  
+			  category: 2,
+			  details: { 
+				Url:"http://lopata.com", 
+				ShortDescription: "Very simple text about LOPATAS", 
+				picture: "http://icons.iconarchive.com/icons/icons8/windows-8/128/Diy-Spade-icon.png" 
+			  }
+			}
+		];
+
+
+		var defaultRenderer =  function(container, item) {
+								   
+						  var category = document.createElement("div");
+						  container.appendChild(category);
+						  
+						  var text = document.createTextNode(item.details.ShortDescription);
+						  var p = document.createElement("p");
+						  p.appendChild(text);
+						  category.appendChild(p);
+						  
+						  category.setAttribute("class", "categoryBase category" + item.category);
+						  container.appendChild(category);
+						  
+						  var img = document.createElement("img");
+						  img.setAttribute("src", item.details.picture);
+						  category.insertBefore(img, category.firstChild);
+						  }
+
+
+						 
+		 var category3Renderer =  function(container, item) {
+								   
+						  var category = document.createElement("div");
+						  container.appendChild(category);
+						  
+						  var text = document.createTextNode(item.details.ShortDescription);
+						  var p = document.createElement("p");
+						  p.appendChild(text);
+						  category.appendChild(p);
+						  
+						  category.setAttribute("class", "specificCategory categoryBase category" + item.category);
+						  container.appendChild(category);
+						  
+						  var img = document.createElement("img");
+						  img.setAttribute("src", item.details.picture);
+						  category.insertBefore(img, category.firstChild);
+						  }
+						  
+							
+		   var renderController = function(item){        
+					switch(item.category)
+					{
+						case specificNumber:
+							return category3Renderer;
+							break;
+						default:
+							return defaultRenderer;
+							break;      
+					}               
+				}
+					
+		 var baseRenderer = function(container, item, renderer){
+					// action1
+					 var link = document.createElement("a");
+					 link.setAttribute("href", item.details.Url);
+					 link.setAttribute("target", "_blank");
+								 
+					//custom      
+					renderer(link, item);
+					
+					//action3
+					container.appendChild(link);
+				}
+				
+			var sort = function( container, items, startItemNumber, endItemNumber)
+			{
+				var counter = startItemNumber;
+				for (var i = 0; i < items.length; i++) 
+				{
+					var indicatorBreak = 0;
+					while(true)
+					{
+						if( +container.childNodes[i].firstChild.className.slice(-1) == counter)
+						{
+							counter++;
+							break;
+						}
+						else
+						{
+							container.appendChild(container.childNodes[i]);	
+							if (counter > endItemNumber) counter = startItemNumber;
+							if(indicatorBreak > items.length) break;
+						}
+						indicatorBreak++;
+					}	
+				}
+			}
+
+			var container = document.createElement("div");
+			  container.classList.add("container");
+			  document.body.appendChild(container);
+
+			for (var i = 0; i < items.length; i++) 
+			{
+				var item = items[i];
+					  
+				baseRenderer(container, item, renderController(item));
+			}
+			
+		alert('sort');
+			
+			sort(container, items, 1, 3);
+			
+	</script>
+	
+</body>
+</html> 
