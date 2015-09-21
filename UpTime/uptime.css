@@ -1,0 +1,51 @@
+h1 {
+  text-align: center;
+}
+
+.uptime_block,
+.uptime_block1 {
+  border: 1px dotted blue;
+  width: 50%;
+  margin: 0 auto;
+  font-family: arial, sans-serif;
+  text-align: center;
+}
+
+.uptime_block p {
+  font-size: 16px;
+}
+
+.uptime_values {
+  font-size: 14px;
+}
+
+.uptime_values span {
+  margin: 0 5px;
+}
+
+.uptime_graph {
+  display: block;
+  margin: 10px auto 10px;
+  height: 50px;
+}
+
+.uptime_graph div {
+  width: 20px;
+  height: 100%;
+  background: blue;
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 0 2px;
+}
+
+.less_then_100 {
+  color: green;
+}
+
+.less_then_96 {
+  color: orange;
+}
+
+.less_then_94 {
+  color: red;
+}
