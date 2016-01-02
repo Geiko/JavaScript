@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2399CBD9-D677-48F9-A1F5-76FBA975A76A}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{56700C96-7633-4765-B46D-2445864108EA}"
+	ProjectSection(SolutionItems) = preProject
+		js\blocks.js = js\blocks.js
+		js\imgGrabber.js = js\imgGrabber.js
+		js\JsHelper.js = js\JsHelper.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{FF956DE8-F632-4B49-893D-27F9CDE61CAE}"
+	ProjectSection(SolutionItems) = preProject
+		stylesheets\style.css = stylesheets\style.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{6D72B4A7-3A3F-4732-912E-8655BA281707}"
+	ProjectSection(SolutionItems) = preProject
+		img\background - копия.jpg = img\background - копия.jpg
+		img\background.jpg = img\background.jpg
+		img\logo.png = img\logo.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{56700C96-7633-4765-B46D-2445864108EA} = {2399CBD9-D677-48F9-A1F5-76FBA975A76A}
+		{FF956DE8-F632-4B49-893D-27F9CDE61CAE} = {2399CBD9-D677-48F9-A1F5-76FBA975A76A}
+		{6D72B4A7-3A3F-4732-912E-8655BA281707} = {2399CBD9-D677-48F9-A1F5-76FBA975A76A}
+	EndGlobalSection
+EndGlobal
