@@ -3,10 +3,20 @@
     <head>
         <meta charset="utf-8">
         <style>
+            
+            .lev0{
+                padding-left: 20px;
+            }
+            .lev1{
+                padding-left: 60px;
+            }
+            .lev2{
+                padding-left: 100px;
+            }
+
         </style>
     </head>
     <body>
-
         <script>
 
             var menu = [ 
@@ -33,10 +43,8 @@
                                                 ]
                                             } 
                                 ]
-                            },  
+                            },                        
                             
-
-
                             {
                                 name: "Рыбы", 
 
@@ -61,36 +69,43 @@
 
 
 
+            var drawing = function( menuItem, level ){
 
+                var element = document.createElement('div');
+                element.innerHTML = '(' + level + ') ' + menuItem['name'];
 
-            var DRAW = function ( menuItem ) {        
-
-                // document.write( depth );
-
-                if( depth == 0 ) {
-                    document.write( '<br/> &nbsp &nbsp &nbsp * &nbsp' );
+                if( level == 0 ) {
+                    element.className = 'lev0';
                 }
-                else if( depth == 1 ) {
-                    document.write( '<br/> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp o &nbsp' );
+                else if( level == 1 ) {
+                    element.className = 'lev1';
                 }
-                else if( depth == 2 ) {
-                    document.write( ' &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp - &nbsp' );
+                else if( level == 2 ) {
+                    element.className = 'lev2';
                 }
 
-                document.write( menuItem['name'] + '<br/>' );
+                document.getElementsByTagName('body')[0]
+                        .appendChild(element);
+            };
 
+
+
+
+            var DRAW = function ( menuItem, level ) {        
+
+                drawing( menuItem, level );
 
 
                 if ( menuItem['items'] ) {
 
-                    depth++;
+                    level++;
 
                     for( var i=0; i<menuItem['items'].length; i++){
 
-                        DRAW ( menuItem['items'][i] );
+                        DRAW ( menuItem['items'][i], level );
                     }
 
-                    depth--;
+                    level--;
                 }
             }
 
@@ -99,9 +114,8 @@
 
             for( var i=0; i<menu.length; i++){
 
-                var depth = 0; 
-                DRAW ( menu[i] );
-
+                var level = 0; 
+                DRAW ( menu[i], level );
             }
 
 
