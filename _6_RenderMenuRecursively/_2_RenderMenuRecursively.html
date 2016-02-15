@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+           <style>
+
+               .level_0:before {
+                 content: "- ";
+               }
+               .level_1:before {
+                 content: "+ ";
+               }
+               .level_2:before {
+                 content: "* ";
+               }
+               .level_0, .level_1, .level_2 {
+                 list-style: none;
+               }
+               
+            </style>
+
+    </head>
+    <body>
+
+        <script>
+
+            var menuData = [ 
+                                {
+                                    name: "Животные", 
+
+                                    items: [ 
+                                                {
+                                                    name: "Млекопитающие", 
+                                                    items: [ 
+                                                                {name: "Коровы"},
+                                                                {name: "Ослы"},
+                                                                {name: "Собаки"},
+                                                                {name: "Тигры"}
+                                                    ]
+                                                }, 
+                                            
+                                                {
+                                                    name: "Другие", 
+                                                    items: [ 
+                                                                {name: "Змеи"},
+                                                                {name: "Птицы"},
+                                                                {name: "Ящерицы"}
+                                                    ]
+                                                } 
+                                    ]
+                                },                        
+
+                                {
+                                    name: "Рыбы", 
+
+                                    items: [ 
+                                                {
+                                                    name: "Аквариумные", 
+                                                    items: [ 
+                                                                {name: "Гуппи"},
+                                                                {name: "Скалярии"}
+                                                    ]
+                                                }, 
+
+                                                {
+                                                    name: "Морские", 
+                                                    items: [ 
+                                                                {name: "Морская форель"}
+                                                    ]
+                                                } 
+                                    ]
+                                } 
+                            ];
+
+
+// ----------------------------------------------------------------------------------------
+//  Constructors
+
+
+            function MenuLevel_0 ( name ) {
+
+                this.Name = name;
+
+                this.Draw = function ( container ){
+
+                    var liElement = document.createElement('li'); 
+                    liElement.innerHTML = this.Name;
+                    liElement.setAttribute("class", "level_0");
+                    container.appendChild ( liElement );
+                }
+            };
+
+
+
+            function MenuLevel_1 ( name ) {
+
+                this.Name = name;
+
+                this.Draw = function ( container ){
+
+                    var liElement = document.createElement('li'); 
+                    liElement.innerHTML = this.Name;
+                    liElement.setAttribute("class", "level_1");
+                    container.appendChild ( liElement );
+                }
+            };
+
+
+
+            function MenuLevel_2 ( name ) {
+
+                this.Name = name;
+
+                this.Draw = function ( container ){
+
+                    var liElement = document.createElement('li'); 
+                    liElement.innerHTML = this.Name;
+                    liElement.setAttribute("class", "level_2");
+                    container.appendChild ( liElement );
+                }
+            };
+
+// ----------------------------------------------------------------------------------------
+//  This is creation of abstract mirror of json data (item) in objects (menuItems).
+
+            var menuItems = [];
+
+
+            var parser = function ( item, level, menuItems ){
+    
+                var result;
+
+                switch ( level ) {
+
+                    case 0:
+                            result = new MenuLevel_0 ( item.name );
+                            break;
+                    case 1:
+                            result = new MenuLevel_1 ( item.name );
+                            break;
+                    case 2:
+                            result = new MenuLevel_2 ( item.name );
+                            break;
+                    default:
+                            result = new MenuLevel_0 ( item.name );
+                }                   
+
+
+                if ( item.hasOwnProperty ('items') == true ) {
+
+                    result.items = [];
+                    for ( var i=0; i<item.items.length; i++) {
+
+                        level++;
+                        parser (  item.items[i], level, result.items );         // parser
+                        level--;
+                    }
+                }
+
+                menuItems.push(result);
+            };
+
+
+            for( var i=0; i<menuData.length; i++){
+
+                var depth = 0; 
+                parser ( menuData[i], depth, menuItems );
+            }
+
+
+// ----------------------------------------------------------------------------------------
+//  Rendering of objects in document.
+
+
+            var drawItemsCollection = function( container, collection ){
+
+                var ulElement = document.createElement('ul');   
+                container.appendChild ( ulElement );
+
+                for( var i=0; i<collection.length; i++){
+
+                    collection[i].Draw ( container.lastChild );         // Draw
+
+                    if ( collection[i].items ) {
+
+                        drawItemsCollection ( container.lastChild.lastChild , collection[i].items );  //  drawItemsCollection
+                    }
+                }
+            };
+
+
+// ----------------------------------------------------------------------------------------
+
+
+            document.getElementsByTagName ('body')[0].appendChild ( document.createElement('div') );
+            var container = document.getElementsByTagName('div')[0];
+
+            drawItemsCollection ( container, menuItems );
+
+
+
+
+
+
+
+
+            // var DRAW = function ( menuItem, depth ) {        
+
+            //     document.write( depth );
+
+            //     if( depth == 0 ) {
+            //         document.write( '<br/> &nbsp &nbsp &nbsp * &nbsp' );
+            //     }
+            //     else if( depth == 1 ) {
+            //         document.write( '<br/> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp o &nbsp' );
+            //     }
+            //     else if( depth == 2 ) {
+            //         document.write( ' &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp - &nbsp' );
+            //     }
+
+            //     document.write( menuItem['name'] + '<br/>' );
+
+
+
+            //     if ( menuItem['items'] ) {
+
+            //         depth++;
+
+            //         for( var i=0; i<menuItem['items'].length; i++){
+
+            //             DRAW ( menuItem['items'][i], depth );
+            //         }
+
+            //         depth--;
+            //     }
+            // }
+
+
+
+
+
+        </script>
+    </body>
+</html>
