@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center">Sign up for Google</h3>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 form-frame">
+                <form name="registration" action="index.php" onsubmit="return validateForm()" method="post">
+
+                    <label class="login-label">
+                        What is your name?
+                    </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" name="firstName" class="form-control" placeholder="First Name" required/>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="lastName" class="form-control" placeholder="Last Name" required/>
+                        </div>
+                    </div>
+
+                    <label class="login-label">
+                        Set your Nickname
+                    </label>
+                    <div>
+                        <input type="email" name="nickName" class="form-control" placeholder="@gmail.com" required/>
+                    </div>
+
+                    <label class="login-label">
+                        Put a password
+                    </label>
+                    <div>
+                        <input type="password" name="password1" class="form-control" required/>
+                    </div>
+
+                    <label class="login-label">
+                        Confirm your password
+                    </label>
+                    <div>
+                        <input type="password" name="password2" class="form-control" required/>
+                    </div>
+
+                    <label class="login-label">
+                        What is your birthday?
+                    </label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="number" name="birthDay" min="1" max="31" value="1" class="form-control" />
+                        </div>
+                        <div class="col-md-4 row-control">
+                            <select name="birthMonth" class="form-control">
+                                <option value="jan" selected>January</option>
+                                <option value="feb">February</option>
+                                <option value="march">March</option>
+                                <option value="apr">April</option>
+                                <option value="may">May</option>
+                                <option value="june">June</option>
+                                <option value="july">July</option>
+                                <option value="aug">August</option>
+                                <option value="sept">September</option>
+                                <option value="oct">October</option>
+                                <option value="nov">November</option>
+                                <option value="dec">December</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" name="birthYear" min="1916" max="2016" value="2016" class="form-control" />
+                        </div>
+                    </div>
+
+                    <label class="login-label">
+                        Your gender
+                    </label>
+                    <div class="form-control">
+                        <div class="row gender">
+                            <div class="col-md-3">
+                                <input type="radio" name="gender" value="male" />Male
+                            </div>
+                            <div class="col-md-4">
+                                <input type="radio" name="gender" value="female" />Female
+                            </div>
+                            <div class="col-md-5">
+                                <input type="radio" name="gender" value="unknown" checked/>It's not named
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="login-label">
+                        Mobile phone
+                    </label>
+                    <div>
+                        <input type="tel" name="phone" class="form-control" value="+380" />
+                    </div>
+
+                    <label class="login-label">
+                        Alternate email address
+                    </label>
+                    <div>
+                        <input type="email" name="email2" class="form-control" />
+                    </div>
+
+                    <label class="login-label">
+                        Country
+                    </label>
+                    <select name="country" class="form-control">
+                        <option value="uk" selected>Ukraine</option>
+                        <option value="usa">USA</option>
+                        <option value="it">Italy</option>
+                        <option value="gb">Grate Britan</option>
+                        <option value="fr">France</option>
+                        <option value="gr">Germany</option>
+                    </select>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <input type="checkbox" name="treaty"/>
+                        </div>
+                        <div class="col-md-10">
+                            <label class="login-lab-light">
+                                I am agreeing with
+                                <a href="https://www.google.com.ua/intl/ru/policies/terms/regional.html">
+                                    using conditions
+                                </a>
+                                and I am agreeing with
+                                <a href="https://www.google.com.ua/intl/ru/policies/privacy/">
+                                    confidentiality policy
+                                </a>
+                                of Google.
+                            </label>
+                        </div>
+                    </div>
+
+                    <input type="submit" name="button" value="Create account" class="btn btn-warning btn-lg login-btn" />
+
+                </form>
+            </div>
+        </div>
+    </div>    
+    <script src="JavaScript.js"></script>
+</body>
+</html>

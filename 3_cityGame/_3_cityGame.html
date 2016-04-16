@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City game</title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        body{
+            background: grey;
+            padding: 15px;
+        }
+        div{
+            border: 3px solid blue;
+            background: black;
+            color: grey;
+            /*margin:3px;*/
+        }
+        .row {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display:         flex;
+        }
+        .start, .browser, .player{
+            color: red;
+            font-size: 16px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 start text-center">
+                <p>Start game! We must name only capitals from this list.</p>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-2 text-center"><h1>Browser</h1></div>
+            <div class="col-xs-2 text-center"><h1>Player</h1></div>
+            <div class="col-xs-8 text-center"><h1>The Capitals</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 text-center browser"></div>
+            <div class="col-xs-2 text-center player"></div>
+            <div class="col-xs-8 text-justify capitals"></div>
+        </div>
+    </div>
+
+
+
+    <script src="data.json">
+        //  (https://github.com/mledoze/countries/blob/master/countries.json)
+    </script>
+
+    <script>
+
+        var Browser = {
+
+             
+            cities: (function () {
+
+                        var capitals = [];
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            capitals.push (  ' ' + data[i] ["capital"] );
+                        }
+
+                        capitals.sort();
+                        document.getElementsByClassName("capitals")[0].innerHTML = '<p>'+capitals+'</p>';
+                        return capitals;
+
+                    })(),
+
+
+
+            startCityGame: function ( ) {
+         
+                var randomIndex = Math.round( Math.random() * (this.cities.length-1));
+                var randomCity = this.cities.splice( randomIndex, 1 )[0];
+
+                document.getElementsByClassName("browser")[0].innerHTML = '<p>'+randomCity+'</p>';
+                document.getElementsByClassName("capitals")[0].innerHTML = '<p>'+this.cities+'</p>';
+                return randomCity;
+            },
+
+
+            step: function ( city ) {
+
+                var lastChar = city.slice(-1).toUpperCase();
+                var tmpCity;
+
+                for( var i=0; i<this.cities.length; i++){
+
+                    if( this.cities[i][1] == lastChar ){
+
+                        tmpCity = this.cities[i];
+                        Browser.cities.splice( i, 1 );
+                        document.getElementsByClassName("browser")[0].innerHTML += '<p>'+tmpCity+'</p>';
+                        document.getElementsByClassName("capitals")[0].innerHTML = '<p>'+Browser.cities+'</p>';
+                        return tmpCity;
+                    }
+                }
+
+                 return -1;
+            }
+        };
+
+
+// --------------------------------------------------------------------------------------------------------------
+
+        var Player = {
+
+            step: function ( city ) {
+
+                while(true) {
+
+                    var lastChar = city.slice(-1).toUpperCase();
+                    var tmpCity = ' ' + prompt ( 'Your turn.', lastChar );
+                    var tmpIndex = Browser.cities.indexOf(tmpCity);
+
+                    if ( tmpIndex > -1 && tmpCity[1] == lastChar ) {
+
+                        Browser.cities.splice( tmpIndex, 1 );
+                        break;
+                    }
+
+                    if( confirm( 'Your answer is wrong. - "'+ tmpCity +'"". Are you going to continue the game?') == false ) { 
+                        return -1;
+                    } 
+                }                             
+                document.getElementsByClassName("player")[0].innerHTML += '<p>'+tmpCity+'</p>';
+                document.getElementsByClassName("capitals")[0].innerHTML = '<p>'+Browser.cities+'</p>';
+                return tmpCity;
+            }
+
+        };
+
+
+// --------------------------------------------------------------------------------------------------------------
+
+
+        var city = Browser.startCityGame ( );
+        
+
+        while (true) {
+
+
+            var city = Player.step( city );
+            if ( city  == -1 ) {                
+                alert('SORRY, YOU LOST. GAME IS OVER.')
+                break;
+            }
+
+
+            city = Browser.step( city );
+            if ( city  == -1 ) {                
+                alert('CONGRATULATIONS, YOU\'VE WON. GAME IS OVER.')
+                break;
+            }
+        }
+     
+
+
+    </script>
+</body>
+</html>

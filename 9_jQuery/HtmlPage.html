@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery</title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <style>
+        body{
+            padding: 15px;
+            background-color: aquamarine;
+        }
+        .row{
+            padding:10px;
+        }
+        .block{
+            border: 1px solid black;
+            padding: 10px;
+            border-radius:5px;
+            background-color: darkgreen;
+            color: lightblue;
+        }
+        .btn{
+            margin-top: 10px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">
+                <input name="textToFind" type="text" value="" placeholder="Enter a word to find" />
+                <button id="btn1" type="button" class="btn btn-danger">Find it in these blocks</button>
+            </div>
+            <div class="col-md-4 col-md-offset-1 block">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 block">
+                Ut fusce varius nisl ac ipsum gravida vel pretium tellus tincidunt integer eu augue augue nunc elit dolor, luctus placerat.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 block">
+                Nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 block">
+                Nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 block">
+                Pretium tellus tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        jQuery(document).ready(function () {
+            $("#btn1").click(function () {
+
+                $('.block').css('background-color', 'darkgreen');
+                
+                var textToFind = $("input").val();
+                var filter = ".block:contains('" + textToFind + "')";
+                $(filter).css('background-color', 'blue');
+
+            });
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>    
+
+
+
+        window.onload = function () {
+            var nameBox = document.homeWorkForm.name;
+            nameBox.addEventListener('blur', onblur);
+        }
+
+
+
+        function onblur(e) {
+            var userName = e.target.value.trim();
+            if (userName !== "") {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "names.txt", true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {                
+
+                        document.homeWorkForm.age.value = +findUserAge(userName, xhr.responseText);
+
+                        if (document.homeWorkForm.age.value == -1) {
+                            alert('There is no user with this name!');
+                            document.homeWorkForm.reset();
+                        }
+                    }
+                }
+                xhr.send();
+                return;
+            }               
+            alert('The fild "Name" must be filled!');                      
+        }
+
+
+
+        function findUserAge(userName, responseString) {
+            responseString = responseString.slice(0, -1);
+            var users = responseString.split('), ');
+            for (var i = 0; i < users.length; i++) {
+                var user = users[i].split('(');
+                console.log(i + ") name: " + user[0] + "; age: " + user[1]);
+                if (user[0] === userName) {
+                    return user[1];
+                }
+            }
+            return -1;
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <form name="homeWorkForm" action="names.txt" method="post">
+
+        <br /><br />
+        <label>
+            Name : <input type="text" value="" name="name" />
+        </label>
+
+        <br /><br />
+        <label>
+            Age : <input type="text" value="" name="age" />
+        </label>
+
+    </form>
+</body>
+</html>

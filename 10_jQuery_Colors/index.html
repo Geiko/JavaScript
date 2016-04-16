@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Colors</title>
+
+    <!-- Bootstrap -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        .backLight{
+            background: #EEECED;
+            color: #333333;
+        }
+        .backRed{
+            background: #FFE0D7;
+            color: #BA3430;
+        }
+        .backGreen{
+            background:#C3FFC8;
+            color: #2C882C;
+        }
+        .backDark{
+            background: #252526;
+            color: #C5C5C3;
+        }
+        
+
+        .logo{
+            font-weight: 900;
+            font-size: 310%;
+        }
+        .logoLight{
+            color: #337AB7;
+        }
+        .logoRed{
+            color: #D9534F;
+        }
+        .logoGreen{
+            color: #5CB85C;
+        }
+        .logoDark{
+            color: #C5C5C3;
+        }
+
+
+        .name{
+            margin-top: 12px;
+            font-weight: bold;
+        }
+        .nameLight{
+            color: #337AB7;
+        }
+        .nameRed{
+            color: #D9534F;
+        }
+        .nameGreen{
+            color: #5CB85C;
+        }
+        .nameDark{
+            color: #C5C5C3;
+        }
+
+
+        .upperBtns{
+            width: 190px;
+            margin-top: 5px;
+        }
+        .darkBtn{
+            background: #535353;
+        }
+
+        
+        .navBtnsLight{
+            width: 196px;        
+            color: #333333;    
+            background: #F9F9F9; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#F9F9F9, #C4C4C3); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#F9F9F9, #C4C4C3); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#F9F9F9, #C4C4C3); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#F9F9F9, #C4C4C3); /* Standard syntax */
+        }
+        .navBtnsRed{
+            width: 196px;         
+            color: #BA3430;   
+            background: #FAA39F; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#FAA39F, #FFF2E9); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#FAA39F, #FFF2E9); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#FAA39F, #FFF2E9); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#FAA39F, #FFF2E9); /* Standard syntax */
+        }
+        .navBtnsGreen{
+            width: 196px;         
+            color: #2C882C;   
+            background: #85E185; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#85E185, #E8FFD0); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#85E185, #E8FFD0); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#85E185, #E8FFD0); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#85E185, #E8FFD0); /* Standard syntax */
+        }
+        .navBtnsDark{
+            width: 196px;            
+            color: #C5C5C3;
+            background: #B2B2B2; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#B2B2B2, #535353); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#B2B2B2, #535353); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#B2B2B2, #535353); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#B2B2B2, #535353); /* Standard syntax */
+        }
+        .longNavBtns{
+            width: 294px;
+        }
+        .image1{
+            margin:3px 0 12px 0;
+        }
+
+
+        .colomnTitle{  
+            padding: 10px;
+        }
+        .colomnTitleLight{  
+            background: linear-gradient(to bottom, #D9D9D7 0,#D9D9D7 50%, #B9B9B8 50%,#B9B9B8 100%);
+        }
+        .colomnTitleRed{  
+            background: linear-gradient(to bottom, #FCBDB7 0,#FCBDB7 50%, #FAA39F 50%,#FAA39F 100%);
+        }
+        .colomnTitleGreen{  
+            background: linear-gradient(to bottom, #AFEEA5 0,#AFEEA5 50%, #85E185 50%,#85E185 100%);
+        }
+        .colomnTitleDark{  
+            background: linear-gradient(to bottom, #808080 0,#808080 50%, #535353 50%,#535353 100%);
+        }
+
+        
+        .considerLight{  
+            background: linear-gradient(to bottom, #808080 0,#808080 50%, #535353 50%,#535353 100%);
+            color: #C5C5C3;
+        }
+        .considerRed{  
+            background: linear-gradient(to bottom, #D9534F 0,#D9534F 50%, #9C1612 50%,#9C1612 100%);
+            color: #FFE0D7;
+        }
+        .considerGreen{  
+            background: linear-gradient(to bottom, #5CB85C 0,#5CB85C 50%, #298529 50%,#298529 100%);
+            color: #C3FFC8;
+        }
+        .considerDark{  
+            background: linear-gradient(to bottom, #D9D9D7 0,#D9D9D7 50%, #B9B9B8 50%,#B9B9B8 100%);
+            color: #333333;
+        }
+
+
+        .colomn{
+            border:1px solid grey;   
+            padding: 20px;
+        }
+        .colomn1{         
+            margin-right: 8px;
+        }
+        .colomn2{         
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+        .colomn3{         
+            margin-left: 8px;
+        }        
+        .colomn3Light{         
+            background:#D0D0CE;
+        }      
+        .colomn3Red{         
+            background:#FCBDB7;
+        }      
+        .colomn3Green{         
+            background:#AFEEA5;
+        }      
+        .colomn3Dark{         
+            background:#3B3B3B;
+        }
+
+
+        .cell {
+            padding: 0;
+        }
+    </style>
+</head>
+
+
+<body class="backLight">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 cell text-uppercase logo">
+                <p><span class="logoLight" id="logo">uic</span></p>
+            </div>
+            <div class="col-md-2 cell text-uppercase name">
+                <p><span class="nameLight" id="name">university of illinois at chicago</span></p>
+            </div>
+            <div class="col-md-2 col-md-offset-1 cell">
+                <button type="button" class="btn btn-info upperBtns" id="button1">
+                    <span class="text-uppercase">
+                        Light
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-2 cell">
+                <button type="button" class="btn btn-danger upperBtns" id="button2">
+                    <span class="text-uppercase">
+                        Red
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-2 cell">
+                <button type="button" class="btn btn-success upperBtns" id="button3">
+                    <span class="text-uppercase">
+                        Green
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-2 cell">
+                <button type="button" class="btn btn-primary upperBtns darkBtn" id="button4">
+                    <span class="text-uppercase">
+                        Dark
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 cell">
+                <button type="button" class="btn btn-default navBtn navBtnsLight">
+                    <span class="text-uppercase">
+                        Dolor sit
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-3 cell">
+                <button type="button" class="btn btn-default navBtn navBtnsLight longNavBtns">
+                    <span class="text-uppercase">
+                        Dolor sit
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-2 cell">
+                <button type="button" class="btn btn-default navBtn navBtnsLight">
+                    <span class="text-uppercase">
+                        Dolor sit
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-3 cell">
+                <button type="button" class="btn btn-default navBtn navBtnsLight longNavBtns">
+                    <span class="text-uppercase">
+                        Dolor sit
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-2 cell">
+                <button type="button" class="btn btn-default navBtn navBtnsLight">
+                    <span class="text-uppercase">
+                        Dolor sit
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 cell image1">
+                <img src="img/trees.png" class="img-responsive" alt="Trees" width="1170" height="200">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 cell">
+                <div class="colomnTitle colomnTitleLight colomn1 text-center considerLight" id="consider">
+                    <span class="text-uppercase">
+                        Sit amet, consectetur.
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4 cell">
+                <div class="colomnTitle colomnTitleLight colomn2 text-center">
+                    <span class="text-uppercase">
+                        Amet, consectetur adipiscing elit.
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4 cell">
+                <div class="colomnTitle colomnTitleLight colomn3 text-center">
+                    <span class="text-uppercase">
+                        Consectetur adipiscing elit fusce vel.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 cell">
+                <div class="colomn colomn1">
+                    <a href="#">
+                        Sem nulla eu ultricies orci praesent id augue nec lorem pretium congue sit amet ac nunc fusce iaculis lorem eu diam hendrerit at mattis purus dignissim vivamus mauris tellus, fringilla vel dapibus a, blandit quis erat vivamus elementum aliquam luctus etiam fringilla pretium sem vitae nec in hac habitasse platea dictumst ut arcu enim, dictum quis ultrices id, sagittis eget nulla sed nunc mi, congue ut ultricies ac, varius a eros donec porttitor, libero fermentum fringilla laoreet, eros arcu sodales ante, ut dictum risus lectus vel quam integer ultricies, nunc eget.
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 cell">
+                <div class="colomn colomn2">
+                    Sem nulla eu ultricies orci praesent id augue nec lorem pretium congue sit amet ac nunc fusce <a href="#">iaculis</a> lorem eu diam hendrerit at mattis purus dignissim vivamus mauris tellus, fringilla vel dapibus a, blandit quis erat vivamus elementum aliquam luctus etiam <a href="#">fringilla</a> pretium sem vitae nec in hac habitasse platea dictumst ut arcu enim, dictum quis ultrices id, sagittis eget nulla sed nunc mi, congue ut ultricies ac, varius a eros donec porttitor, libero fermentum fringilla <a href="#">laoreet</a>, eros arcu sodales ante, ut dictum risus lectus vel quam integer ultricies, nunc eget.
+                </div>
+            </div>
+            <div class="col-md-4 cell">
+                <div class="colomn colomn3 colomn3Light" id="colomn3">
+                    Sem nulla eu ultricies orci praesent id augue nec lorem pretium congue sit amet ac nunc fusce iaculis <a href="#">lorem eu diam hendrerit</a> at mattis purus dignissim vivamus mauris tellus, fringilla vel dapibus a, blandit quis erat vivamus elementum aliquam luctus etiam fringilla pretium sem vitae nec in hac habitasse platea dictumst ut arcu enim, dictum <a href="#">quis ultrices id</a>, sagittis eget nulla sed nunc mi, congue ut ultricies ac, varius a eros donec porttitor, libero fermentum fringilla laoreet, eros arcu sodales ante, ut dictum risus lectus vel quam integer ultricies, nunc eget.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $(function () {
+
+            $("#button1").click(function () {
+                var b = $("body");
+                b.removeClass();
+                b.addClass("backLight");
+
+                var logo = $("#logo");
+                logo.removeClass();
+                logo.addClass("logoLight");
+
+                var name = $("#name");
+                name.removeClass();
+                name.addClass("nameLight");
+
+                var navBtn = $(".navBtn");
+                navBtn.removeClass("navBtnsRed navBtnsGreen navBtnsDark");
+                navBtn.addClass("navBtnsLight");
+
+                var title = $(".colomnTitle");
+                title.removeClass("colomnTitleRed colomnTitleGreen colomnTitleDark");
+                title.addClass("colomnTitleLight");
+
+                var greyCol = $("#colomn3");
+                greyCol.removeClass("colomn3Red colomn3Green colomn3Dark");
+                greyCol.addClass("colomn3Light");
+
+                var consider = $("#consider");
+                consider.removeClass("considerRed considerGreen considerDark");
+                consider.addClass("considerLight");
+            });
+
+            $("#button2").click(function () {
+                var b = $("body");
+                b.removeClass();
+                b.addClass("backRed");
+
+                var logo = $("#logo");
+                logo.removeClass();
+                logo.addClass("logoRed");
+
+                var name = $("#name");
+                name.removeClass();
+                name.addClass("nameRed");
+
+                var navBtn = $(".navBtn");
+                navBtn.removeClass("navBtnsLight navBtnsGreen navBtnsDark");
+                navBtn.addClass("navBtnsRed");
+
+                var title = $(".colomnTitle");
+                title.removeClass("colomnTitleLight colomnTitleGreen colomnTitleDark");
+                title.addClass("colomnTitleRed");
+
+                var greyCol = $("#colomn3");
+                greyCol.removeClass("colomn3Light colomn3Green colomn3Dark");
+                greyCol.addClass("colomn3Red");
+
+                var consider = $("#consider");
+                consider.removeClass("considerLight considerGreen considerDark");
+                consider.addClass("considerRed");
+            });
+
+            $("#button3").click(function () {
+                var b = $("body");
+                b.removeClass();
+                b.addClass("backGreen");
+
+                var logo = $("#logo");
+                logo.removeClass();
+                logo.addClass("logoGreen");
+
+                var name = $("#name");
+                name.removeClass();
+                name.addClass("nameGreen");
+
+                var navBtn = $(".navBtn");
+                navBtn.removeClass("navBtnsLight navBtnsRed navBtnsDark");
+                navBtn.addClass("navBtnsGreen");
+
+                var title = $(".colomnTitle");
+                title.removeClass("colomnTitleLight colomnTitleRed colomnTitleDark");
+                title.addClass("colomnTitleGreen");
+
+                var greyCol = $("#colomn3");
+                greyCol.removeClass("colomn3Light colomn3Red colomn3Dark");
+                greyCol.addClass("colomn3Green");
+
+                var consider = $("#consider");
+                consider.removeClass("considerLight considerRed consider considerDark");
+                consider.addClass("considerGreen");
+            });
+
+            $("#button4").click(function () {
+                var b = $("body");
+                b.removeClass();
+                b.addClass("backDark");
+
+                var logo = $("#logo");
+                logo.removeClass();
+                logo.addClass("logoDark");
+
+                var name = $("#name");
+                name.removeClass();
+                name.addClass("nameDark");
+
+                var navBtn = $(".navBtn");
+                navBtn.removeClass("navBtnsLight navBtnsRed navBtnsGreen");
+                navBtn.addClass("navBtnsDark");
+
+                var title = $(".colomnTitle");
+                title.removeClass("colomnTitleLight colomnTitleRed colomnTitleGreen");
+                title.addClass("colomnTitleDark");
+
+                var greyCol = $("#colomn3");
+                greyCol.removeClass("colomn3Light colomn3Red colomn3Green");
+                greyCol.addClass("colomn3Dark");
+
+                var consider = $("#consider");
+                consider.removeClass("considerLight considerRed considerGreen");
+                consider.addClass("considerDark");
+            });
+        });
+
+    </script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Task 1</title>
+    <script>
+
+        function checkInput( something ) {
+
+            console.log(something + '   ' + typeof something);
+
+            if (something === '') {
+                alert('Input is empty!');
+                return false;
+            }
+            else if (something === null) {
+                alert('Input is null!');
+                return false;
+            }			
+            else if (something === undefined) {
+                alert('Input is undefined!');
+                return false;
+            }
+			
+            //var something = parseInt(something);
+            //var something = parseFloat(something);
+            //something = +something;
+            //something = -something;
+            //something = 1*something;
+            //something = something/1;
+            something = something - 0;
+
+            console.log(something + '   ' + typeof something);
+            
+            if ( isNaN ( something ) ) return false;
+
+            return true;
+
+        }
+
+
+
+        function inputValue() {
+
+            var number;
+            while (true) {
+                number = prompt("Enter a number. ", "100");
+
+                var test = checkInput(number);
+                console.log('     Test: ' + test);
+                if (test === true) break;
+
+                var isModify = confirm('Input is not a number. Will you input another value?')
+                if (isModify === false) break;
+            }
+            return +number;
+
+        }
+
+
+
+        function inputAction() {
+
+            var action;
+            while (true) {
+                action = prompt("Enter an action ( + || - || * || / ) ", "+");
+                if (action === '+' || action === '-' || action === '*' || action === '/') break;
+                else {
+                    alert('Action is not correct!');
+                }
+            }
+            return action;
+        }
+
+
+        function calculate(a, b, action) {
+
+            switch (action) {
+                case '+':
+                    return a + b;
+                case '-':
+                    return a - b;
+                case '*':
+                    return a * b;
+                case '/':
+                    return a / b;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    
+    <script>
+
+        document.write("Task 1.<br><br>");
+
+        var a = inputValue();
+        document.write('a = ' + a + ';   type: ' + typeof a + ';<br>');
+
+        var action = inputAction();
+        document.write('action: ' + action +';<br>');
+
+        var b = inputValue();
+        document.write('b = ' + b + ';   type: ' + typeof b + ';<br><br>');
+
+     //#1
+        var result = calculate(a, b, action);
+
+        document.write ( "Calculator's answer: " + a + action + b + ' = ' + result + ';' );
+
+    </script>
+   
+    <!--#2-->
+    <script>
+
+        var expr = a + action + b;
+
+        document.write('<br><br> #2(with eval())<br>' + expr + ' = ' + eval(expr));
+
+    </script>
+</body>
+</html>

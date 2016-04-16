@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Home work 2</title>
+	<meta charset="utf-8" />
+    <script>
+
+
+    
+        var check = function ( input, type ) {
+
+            if ( input === '') {
+
+                alert ( input + ' is empty!');
+                return false;
+
+            }
+            else if ( input === null) {
+
+                alert ( input + ' is null!');
+                return false;
+
+            }           
+            else if ( input === undefined) {
+
+                alert ( input + ' is undefined!');
+                return false;
+            }
+
+
+
+            if ( type === 'Name' || type === 'Login' ) {
+
+                // Name and Login must contain only 0-9a-zA-Z
+
+                if( /^[a-zA-Z0-9.]+$/.test( input )) {
+
+                    return true;
+                }
+            }            
+            else if ( type === 'Password' ) {
+
+                // Password must meet the following criteria:
+                // - Contain at least 8 characters
+                // - contain at least 1 number
+                // - contain at least 1 lowercase character (a-z)
+                // - contain at least 1 uppercase character (A-Z)
+                // - contains only 0-9a-zA-Z
+
+                if( /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test( input )) {
+
+                    return true;
+                }
+            }
+
+                
+            alert ( input + ' is not correct!');
+            return false;
+        }
+
+
+
+        var checkData = function ( user ) {
+
+            if ( check ( user [ 'name' ], 'Name') == false ) return false;
+            if ( check ( user [ 'login' ], 'Login') == false ) return false;
+            if ( check ( user [ 'password' ], 'Password') == false ) return false;
+
+            return true;
+
+        }
+
+
+
+
+        var inputData = function () {
+
+            var userName = prompt('Enter your name, please');
+            var userLogin = prompt('Enter your login, please');            
+            var userPassword = prompt('Enter your password, please');
+        
+            return [userName, userLogin, userPassword];
+
+        }
+
+
+
+        var createUser = function () {
+
+            var userData = inputData();
+
+            return {
+                name: userData[0],
+                login: userData[1],
+                password: userData[2]
+            };
+        }
+
+
+
+        var showUser = function (user) {
+
+            document.write('NEW USER : <br/>');
+            document.write('name - ' + user.name + '<br/>');
+            document.write('login - ' + user.login + '<br/>');
+            document.write('password - ' + user.password + '<br/><br/>');
+        }
+
+    </script>
+    
+</head>
+
+<body>
+
+    <h3>Making users</h3>
+
+    <script>
+
+
+
+        while ( true ) {
+
+            var user = createUser();
+
+
+            if ( checkData ( user ) == false ) {
+                 
+                alert('Your data is not correct!');    
+            }
+            else{
+
+                showUser ( user );                
+            }
+
+
+            if ( confirm ( 'Whold you like to add another user?' ) == false ) {
+
+                break;
+            }
+
+        }
+
+
+
+    </script>
+</body>
+</html>

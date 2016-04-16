@@ -1,0 +1,90 @@
+﻿body {
+    background-color: darkgray;
+}
+
+.form-frame
+{
+	border: 5px solid #ccc;  
+	width: 360px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+		    
+.form-control
+{
+	margin-bottom: 8px;
+	font-size: 14px;
+	height: auto;
+	padding: 3px 10px 3px 10px;
+	background-color: #FFF9F3;
+	border: 1px solid #FFF9F3;
+    position: relative;
+}	
+	    
+.form-control:hover
+{
+	border: 1px solid #ccc;
+}
+		    
+.row-control
+{
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+
+.gender
+{
+	font-size: 12px;
+}
+
+.login-label
+{
+	color: green;
+	font-size: 12px;
+    margin: 0;
+}
+
+.login-lab-light
+{
+	color: green;
+	font-size: 12px;
+    margin: 0;
+    float:left;
+    font-weight:lighter;
+}
+
+.login-btn
+{
+	background-color: green;
+	border-radius: 25px;
+	font-size: 12px;
+    float: right;
+    margin-top: 10px;
+    border-color: green;
+}
+
+.warningField
+{    
+    position: absolute;
+    top: 0; 
+    right: -225px; 
+    padding: 2px 10px 2px 70px;
+    background-color: red;
+    color: white;
+    border-radius: 50% 10px 10px 50%;
+    width: auto;
+}
+
+.helpField
+{    
+    position: absolute;
+    top: 10px; 
+    left: -300px; 
+    padding: 3px 70px 3px 10px;
+    background-color:green;
+    color: white;
+    border-radius: 10px 27% 73% 10px;
+    width: 300px;
+}

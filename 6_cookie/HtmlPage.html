@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <p>
+        Создать страницу, при запуске которой,
+
+        - в LocalStorage,
+        - в SessionStorage и
+        - в Cookies
+
+        запишется информация о времени захода на эту страницу.
+    </p>
+    <script>
+        var entranceTime1 = new Date().toUTCString();
+        document.cookie = "entranceTime1=" + entranceTime1 + ";";
+
+        var entranceTime2 = new Date().toTimeString();
+        document.cookie = "entranceTime2=" + entranceTime2 + "; expiars=Session; path=\; domain=localhost;";
+
+        var cookeis = document.cookie.split(";");
+        for (var i = 0; i < cookeis.length; i++) {
+            var parts = cookeis[i].split("=");
+            document.write("<br/>");
+            document.write("Cookei name : " + parts[0] + "<br/>");
+            document.write("Cookei value : " + parts[1] + "<br/>");
+        }
+
+
+
+        var entranceTime3 = new Date().toUTCString();
+        localStorage.setItem("entranceTime3", entranceTime1);
+
+        var time3 = localStorage.getItem("entranceTime3");
+        document.write("<br/> Local Storage value : " + time3 + "<br/>");
+
+        //localStorage.removeItem("entranceTime2");
+        //localStorage.clear();
+
+
+
+        var entranceTime4 = new Date().toUTCString();
+        sessionStorage.setItem("entranceTime4", entranceTime1);
+
+        var time4 = sessionStorage.getItem("entranceTime4");
+        document.write("<br/> Session Storage value : " + time4 + "<br/>");
+
+        //sessionStorage.removeItem("entranceTime2");
+        //sessionStorage.clear();
+
+
+
+
+    </script>
+</body>
+</html>

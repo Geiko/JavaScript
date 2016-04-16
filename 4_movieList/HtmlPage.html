@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie List</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <style>
+    body{
+        background: grey;
+        padding: 50px;
+        font-size: 21px;
+    }
+       .genre:before {
+         content: "-";
+       }
+       .movie:before {
+         content: "+";
+       }
+       .part:before {
+         content: "*";
+       }
+       .genre, .movie, .part {
+         list-style: none;
+       }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li class="genre">
+            &nbsp Horror
+            <ul>
+                <li class="movie">
+                    Ring
+                    <ul>
+                        <li class="part">
+                            Part1
+                        </li>
+                        <li class="part">
+                            Part2
+                        </li>
+                    </ul>
+                </li>
+                <li class="movie">
+                    Miracles
+                    <ul>
+                        <li class="part">
+                            Part1
+                        </li>
+                        <li class="part">
+                            Part2
+                        </li>
+                        <li class="part">
+                            Part3
+                        </li>
+                        <li class="part">
+                            Part4
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <button type="button" class="btn btn-success">Start script</button>
+
+    <script>
+
+        var Add = function(item){
+
+            var nodes = item.childNodes;
+
+
+            // if( item.children.length != 0 ){
+              console.log(nodes[0]. );
+              // item.innerText += 'DR';
+            // }
+
+        };
+
+        $( ".btn" ).click ( function() {
+
+            var genre = document.querySelector(".genre");
+            // var genre = document.getElementsByClassName("genre")[0];
+            Add(genre);
+
+        });
+
+    </script>
+
+</body>
+</html>
