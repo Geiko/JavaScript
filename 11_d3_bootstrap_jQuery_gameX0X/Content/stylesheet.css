@@ -1,0 +1,66 @@
+body{
+    padding-top: 100px;
+    background-color:#1E1E1E;
+}
+.cell {
+    /*height: 180px;*/
+    height: 100px;
+    /*padding: 5px;*/
+    padding-top: 10px;
+}
+.cell00 {
+    border-right: 3px solid grey;
+    border-bottom: 3px solid grey;
+}
+.cell01 {
+    border-right: 3px solid grey;
+    border-bottom: 3px solid grey;
+    border-left: 3px solid grey;
+}
+.cell02 {
+    border-bottom: 3px solid grey;
+    border-left: 3px solid grey;
+}
+.cell10 {
+    border-top: 3px solid grey;
+    border-right: 3px solid grey;
+    border-bottom: 3px solid grey;
+}
+.cell11 {
+    border-top: 3px solid grey;
+    border-right: 3px solid grey;
+    border-bottom: 3px solid grey;
+    border-left: 3px solid grey;
+}
+.cell12 {
+    border-top: 3px solid grey;
+    border-bottom: 3px solid grey;
+    border-left: 3px solid grey;
+}
+.cell20 {
+    border-top: 3px solid grey;
+    border-right: 3px solid grey;
+}
+.cell21 {
+    border-top: 3px solid grey;
+    border-left: 3px solid grey;
+    border-right: 3px solid grey;
+}
+.cell22 {
+    border-top: 3px solid grey;
+    border-left: 3px solid grey;
+}
+.score{
+    margin-top: 20px;
+    color: green;
+    font-size:16px;
+}
+.gamers{
+    color: gray;
+}
+.player-score{
+    padding-left: 35px;
+}
+.drawScore{            
+    padding: 0;
+}
