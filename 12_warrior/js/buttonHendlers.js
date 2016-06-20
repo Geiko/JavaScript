@@ -1,22 +1,35 @@
-		warrior.born();
+
+
 		$("#born").click(function(){
-			warrior.born();
+			warrior1.born();
 		});
 		$("#takeSword").click(function(){
-			warrior.takeSword();
+			warrior1.takeSword();
 		});
 		$("#go").click(function(){
-			warrior.go();
+			warrior1.go();
 		});
 		$("#back").click(function(){
-			warrior.back();
+			warrior1.back();
 		});
 		$("#shield").click(function(){
-			warrior.shield();
+			warrior1.shield();
 		});
 		$("#hit").click(function(){
-			warrior.hit();
+			warrior1.hit();
 		});
 		$("#upHit").click(function(){
-			warrior.upHit();
-		});	
+			warrior1.upHit();
+		});			
+		
+		// document.getElementById("hit").addEventListener("click", warrior.hit);
+		// document.getElementById("upHit").addEventListener("click", warrior.upHit);
+
+
+
+
+		var warrior1 = new Warrior();
+		//var warrior2 = new Warrior();
+
+		warrior1.born();
+		warrior2.born();
