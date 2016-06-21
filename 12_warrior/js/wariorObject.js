@@ -94,8 +94,11 @@
 
 		var Warrior = function( ){
 
-			this.picWidth = 200;
-			this.picHeight = 200;
+			this.picWidth = 100;
+			this.picHeight = 100;
+
+			this.step = 50;
+			this.timeInterval = 300;
 
 
 
@@ -138,7 +141,7 @@
 			this.go = function(){
 
 				var set = $("div.Warrior:last-child").offset();
-				set.left += 50;
+				set.left += this.step;
 				$("div.Warrior:last-child").offset(set);
 			};
 
@@ -147,7 +150,7 @@
 			this.back = function(){
 
 				var set = $("div.Warrior:last-child").offset();
-				set.left -= 50;
+				set.left -= this.step;				
 				$("div.Warrior:last-child").offset(set);
 			};
 
@@ -166,15 +169,15 @@
 
 				setTimeout(function (){ 
 					WarriorThis.act("img/shield2.png"); 
-				}, 300);
+				}, this.timeInterval);
 
 				setTimeout(function(){
 					WarriorThis.act("img/shield.png");
-				}, 600);
+				}, this.timeInterval * 2);
 
 				setTimeout(function(){
 					WarriorThis.act("img/takeSword.png");
-				}, 900);
+				}, this.timeInterval * 3);
 			};
 
 
@@ -187,12 +190,12 @@
 
 				setTimeout(function(){
 					WarriorThis.act("img/takeSword.png");
-				}, 300);
+				}, this.timeInterval);
 
 				setTimeout(function(){
 					WarriorThis.back();
 					WarriorThis.shield();
-				}, 600);
+				}, this.timeInterval * 2);
 			};
 
 
@@ -204,26 +207,26 @@
 
 				setTimeout(function(){
 					WarriorThis.act("img/upHit2.png");
-				}, 200);
+				}, this.timeInterval/3*2);
 
 				setTimeout(function(){
 					WarriorThis.go();
 					WarriorThis.act("img/upHit3.png");
-				}, 400);
+				}, this.timeInterval/3*2 * 2);
 
 				setTimeout(function(){
 					WarriorThis.go();
 					WarriorThis.act("img/upHit4.png");
-				}, 600);			
+				}, this.timeInterval/3*2 * 3);			
 
 				setTimeout(function(){
 					WarriorThis.back();
 					WarriorThis.act("img/takeSword.png");
-				}, 800);			
+				}, this.timeInterval/3*2 * 4);			
 
 				setTimeout(function(){
 					WarriorThis.back();
 					WarriorThis.shield();
-				}, 1000);
+				}, this.timeInterval/3*2 * 5);
 			}
 		}
