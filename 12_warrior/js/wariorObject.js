@@ -94,38 +94,61 @@
 
 		var Warrior = function( ){
 
-			this.go = function(){
-
-				var set = $("div.Warrior").offset();
-				set.left += 50;
-				$("div.Warrior").offset(set);
-			};
+			this.picWidth = 200;
+			this.picHeight = 200;
 
 
 
-			this.back = function(){
+			this.act = function (url, isBorn){
+				// if(isBorn){
+				// 	$(".Warrior:first-child").html("<img src=\"" + url + "\" alt=\"Warrior\" width=\"150\" height=\"150\">" );
+				// }
+				// else{
+				// 	$(".Warrior:last-child").html("<img src=\"" + url + "\" alt=\"Warrior\" width=\"150\" height=\"150\">" );
+				// }
 
-				var set = $("div.Warrior").offset();
-				set.left -= 50;
-				$("div.Warrior").offset(set);
-			};
-
-
-
-			this.act = function (url){
-				//$(".Warrior").html("<img src=\"" + url + "\" alt=\"Warrior\" width=\"150\" height=\"150\">" );
+				if(isBorn){
 				var temp = document.getElementsByClassName("Warrior")[0];
-				temp.innerHTML = "<img src=\"" + url + "\" alt=\"Warrior\" width=\"200\" height=\"200\">";
+				temp.innerHTML = "<img src=\"" + url + 
+					"\" alt=\"Warrior\" width=\""+ this.picWidth +"\" height=\""+ this.picHeight +"\">";
+				}
+				else{
+					var temp = document.getElementsByClassName("Warrior");
+					temp = temp[temp.length-1];
+					temp.innerHTML = "<img src=\"" + url + 
+						"\" alt=\"Warrior\" width=\""+ this.picWidth +"\" height=\""+ this.picHeight +"\">";
+				}
 			};
 
 
 
 			this.born = function (){
 
-				// var newDiv = document.createElement('div');
-				// newDiv.className = 'Warrior';
-				// document.body.insertBefore(newDiv, document.body.firstChild);
-				this.act("img/warrior.png");
+				var newDiv = document.createElement('div');
+				newDiv.className = 'Warrior';
+
+				var fieldDiv = document.getElementsByClassName('field')[0];
+				fieldDiv.insertBefore(newDiv, fieldDiv.firstChild);
+
+				this.act("img/warrior.png", true);
+			};
+
+
+
+			this.go = function(){
+
+				var set = $("div.Warrior:last-child").offset();
+				set.left += 50;
+				$("div.Warrior:last-child").offset(set);
+			};
+
+
+
+			this.back = function(){
+
+				var set = $("div.Warrior:last-child").offset();
+				set.left -= 50;
+				$("div.Warrior:last-child").offset(set);
 			};
 
 
@@ -139,18 +162,18 @@
 			this.shield = function(){
 
 				this.act("img/shield.png");				
-				var context = this;					//	var context = this;	
+				var WarriorThis = this;					//	 this;	
 
 				setTimeout(function (){ 
-					context.act("img/shield2.png"); 
+					WarriorThis.act("img/shield2.png"); 
 				}, 300);
 
 				setTimeout(function(){
-					context.act("img/shield.png");
+					WarriorThis.act("img/shield.png");
 				}, 600);
 
 				setTimeout(function(){
-					context.act("img/takeSword.png");
+					WarriorThis.act("img/takeSword.png");
 				}, 900);
 			};
 
@@ -160,15 +183,15 @@
 
 				this.go();
 				this.act("img/hit.png");
-				var context = this;					//	var context = this;	
+				var WarriorThis = this;					//	 this;	
 
 				setTimeout(function(){
-					context.act("img/takeSword.png");
+					WarriorThis.act("img/takeSword.png");
 				}, 300);
 
 				setTimeout(function(){
-					context.back();
-					context.shield();
+					WarriorThis.back();
+					WarriorThis.shield();
 				}, 600);
 			};
 
@@ -177,30 +200,30 @@
 			this.upHit = function(){
 
 				this.act("img/upHit1.png");
-				var context = this;					//	var context = this;	
+				var WarriorThis = this;					//	 this;	
 
 				setTimeout(function(){
-					context.act("img/upHit2.png");
+					WarriorThis.act("img/upHit2.png");
 				}, 200);
 
 				setTimeout(function(){
-					context.go();
-					context.act("img/upHit3.png");
+					WarriorThis.go();
+					WarriorThis.act("img/upHit3.png");
 				}, 400);
 
 				setTimeout(function(){
-					context.go();
-					context.act("img/upHit4.png");
+					WarriorThis.go();
+					WarriorThis.act("img/upHit4.png");
 				}, 600);			
 
 				setTimeout(function(){
-					context.back();
-					context.act("img/takeSword.png");
+					WarriorThis.back();
+					WarriorThis.act("img/takeSword.png");
 				}, 800);			
 
 				setTimeout(function(){
-					context.back();
-					context.shield();
+					WarriorThis.back();
+					WarriorThis.shield();
 				}, 1000);
 			}
 		}

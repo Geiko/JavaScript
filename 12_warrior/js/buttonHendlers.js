@@ -32,4 +32,4 @@
 		//var warrior2 = new Warrior();
 
 		warrior1.born();
-		warrior2.born();
+		//warrior2.born();
