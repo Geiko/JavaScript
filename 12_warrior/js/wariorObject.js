@@ -1,8 +1,8 @@
 	var Warrior = function( ){
 
-		this.picWidth = 100;
-		this.picHeight = 100;
 
+		this.picWidth = 200;
+		this.picHeight = 200;
 		this.step = 50;
 		this.timeInterval = 300;
 
@@ -46,9 +46,18 @@
 
 		this.go = function(){
 
-			var set = $("div.Warrior:last-child").offset();
-			set.left += this.step;
-			$("div.Warrior:last-child").offset(set);
+			// var set = $("div.Warrior:last-child").offset();
+			// set.left += this.step;
+			// $("div.Warrior:last-child").offset(set);
+
+			var allWarrior = document.getElementsByClassName('Warrior');
+			var lastWarrior = allWarrior [ allWarrior.length - 1 ];
+
+			var temp = lastWarrior.style.left;
+			temp = + temp.slice(0, -2);
+			var newPosition = temp + this.step;
+
+			lastWarrior.style = 'position:relative; left:'+ newPosition +'px;';
 		};
 
 
@@ -56,8 +65,6 @@
 		this.back = function(){
 
 			var set = $("div.Warrior:last-child").offset();
-
-			//var allWarriors = document.getElementsByClassName('Warrior');
 			var penultWarriorIndex = document.getElementsByClassName('Warrior').length - 2;
 			var penultSet = $("div.Warrior").eq(penultWarriorIndex).offset();
 
