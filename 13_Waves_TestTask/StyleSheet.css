@@ -1,0 +1,21 @@
+﻿body{
+    padding: 50px;
+}
+
+.waves {
+    display: block;
+    border-left: 1px solid black;
+}
+
+.line{
+    display: block;    
+    clear: both;
+}
+
+.cell{
+    /*border: 1px solid blue;*/
+    width: 15px;
+    height: 15px;
+    display: block;
+    float: left;
+}
