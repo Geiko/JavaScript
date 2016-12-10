@@ -12,17 +12,38 @@ $(document).ready(function () {
     (function () {
 
         var fieldWidth = 50;
-        var fieldHeight = 10;
-        var fieldVelocity = 1;
+        var fieldHeight = 20;
+        var fieldPause= 1;
         var colors = [];
 
-        var getRandomColor = function () {
+
+        createField(fieldWidth, fieldHeight);
+
+
+        var timerId = setInterval(function(){
+            step(fieldWidth, fieldHeight);
+        }, fieldPause);
+
+
+        var i = 0;
+        $('.waves').click(function(event){
+            i++;
+            colors.push(getRandomColor());
+            var clickedLine = +event.target.id;
+
+            $('.line' + clickedLine + ' .cell' + 0)
+                .css('background-color', colors[i - 1])
+                .attr('color', i);
+        });
+
+
+
+        function getRandomColor () {
             return '#' + Math.random().toString(16).substr(-6);
         };
 
 
-
-        var createField = function (width, height) {
+        function createField (width, height) {
             var waves = $('.waves');
             for (var i = 0; i < height; i++) {
                 waves.append('<div class="line line' + i + '"></div>');
@@ -32,53 +53,8 @@ $(document).ready(function () {
             }
         };
 
-        createField(fieldWidth, fieldHeight);
 
-
-
-        var i = 0;
-        $('.waves').click({width: fieldWidth, height: fieldHeight, velocity: fieldVelocity}, function(event){
-
-            i++;
-            colors.push(getRandomColor());
-            var clickedLine = +event.target.id;
-
-            var j = 0;
-            var step = function (width, height) {
-
-                if (j === 0) {
-                	firstStep(clickedLine, colors, i);
-                }
-                else {
-                    fullStep(width, height);
-                }
-
-                j++;
-            };
-
-            var timerId = setInterval(function(){
-            	step(event.data.width, event.data.height);
-            }, event.data.velocity);
-
-            setTimeout(function () {
-                clearInterval(timerId);
-                console.log('stop');
-            }, 20000);
-
-        });
-
-
-
-        function firstStep (clickedLine, colors, i) {
-
-            $('.line' + clickedLine + ' .cell' + 0)
-                .css('background-color', colors[i - 1])
-                .attr('color', i);
-        }
-
-
-
-        function fullStep (width, height) {
+        function step (width, height) {
 
             for (var i = height - 1; i >= 0; i--) {
                 for (var j = width - 1; j >= 0; j--) {
