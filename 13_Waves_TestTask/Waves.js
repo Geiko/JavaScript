@@ -11,9 +11,9 @@
 $(document).ready(function () {
     (function () {
 
-        var width = 50;
-        var height = 10;
-        var velocity = 1;
+        var fieldWidth = 50;
+        var fieldHeight = 10;
+        var fieldVelocity = 1;
         var colors = [];
 
         var getRandomColor = function () {
@@ -21,7 +21,8 @@ $(document).ready(function () {
         };
 
 
-        var createField = function () {
+
+        var createField = function (width, height) {
             var waves = $('.waves');
             for (var i = 0; i < height; i++) {
                 waves.append('<div class="line line' + i + '"></div>');
@@ -31,11 +32,53 @@ $(document).ready(function () {
             }
         };
 
-        createField();
+        createField(fieldWidth, fieldHeight);
 
 
 
-        var tickStep = function () {
+        var i = 0;
+        $('.waves').click({width: fieldWidth, height: fieldHeight, velocity: fieldVelocity}, function(event){
+
+            i++;
+            colors.push(getRandomColor());
+            var clickedLine = +event.target.id;
+
+            var j = 0;
+            var step = function (width, height) {
+
+                if (j === 0) {
+                	firstStep(clickedLine, colors, i);
+                }
+                else {
+                    fullStep(width, height);
+                }
+
+                j++;
+            };
+
+            var timerId = setInterval(function(){
+            	step(event.data.width, event.data.height);
+            }, event.data.velocity);
+
+            setTimeout(function () {
+                clearInterval(timerId);
+                console.log('stop');
+            }, 20000);
+
+        });
+
+
+
+        function firstStep (clickedLine, colors, i) {
+
+            $('.line' + clickedLine + ' .cell' + 0)
+                .css('background-color', colors[i - 1])
+                .attr('color', i);
+        }
+
+
+
+        function fullStep (width, height) {
 
             for (var i = height - 1; i >= 0; i--) {
                 for (var j = width - 1; j >= 0; j--) {
@@ -78,36 +121,5 @@ $(document).ready(function () {
                 }
             }
         };
-
-
-
-        var i = 0;
-        $('.waves').click(function (event) {
-            i++;
-            colors.push(getRandomColor());
-            var clickedLine = +event.target.id;
-
-            var j = 0;
-            var act = function () {
-                if (j === 0) {
-                    $('.line' + clickedLine + ' .cell' + 0)
-                        .css('background-color', colors[i - 1])
-                        .attr('color', i);
-                }
-                else {
-                    tickStep();
-                }
-
-                j++;
-            }
-
-            var timerId = setInterval(act, velocity);
-
-            setTimeout(function () {
-                clearInterval(timerId);
-                console.log('stop');
-            }, 100000);
-
-        });
     })();
 });
