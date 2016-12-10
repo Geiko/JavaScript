@@ -13,35 +13,29 @@ $(document).ready(function () {
 
         var fieldWidth = 50;
         var fieldHeight = 20;
-        var fieldPause= 1;
-        var colors = [];
-
+        var fieldPause= 300;
+        var fieldColors = [];
 
         createField(fieldWidth, fieldHeight);
 
-
         var timerId = setInterval(function(){
-            step(fieldWidth, fieldHeight);
+            step(fieldWidth, fieldHeight, fieldColors);
         }, fieldPause);
 
-
         var i = 0;
-        $('.waves').click(function(event){
+        $('.waves').click({colors: fieldColors}, function(event){
             i++;
-            colors.push(getRandomColor());
+            event.data.colors.push(getRandomColor());
             var clickedLine = +event.target.id;
 
             $('.line' + clickedLine + ' .cell' + 0)
-                .css('background-color', colors[i - 1])
+                .css('background-color', event.data.colors[i - 1])
                 .attr('color', i);
         });
-
-
 
         function getRandomColor () {
             return '#' + Math.random().toString(16).substr(-6);
         };
-
 
         function createField (width, height) {
             var waves = $('.waves');
@@ -53,49 +47,35 @@ $(document).ready(function () {
             }
         };
 
-
-        function step (width, height) {
+        function step (width, height, colors) {
 
             for (var i = height - 1; i >= 0; i--) {
-                for (var j = width - 1; j >= 0; j--) {
+                for (var j = width - 1; j > 0; j--) {
                     var carrentCell = $('.line' + i + ' .cell' + j);
-                    if (j > 0) {
-                        var neighborCell = $('.line' + i + ' .cell' + (j - 1));
-                        var neighborCellNumber = +neighborCell.attr("color");
-                        if (+carrentCell.attr("color") < neighborCellNumber) {
-                            carrentCell
-                                .css('background-color', colors[neighborCellNumber - 1])
-                                .attr("color", neighborCellNumber);
-                        }
-                    }
+                    var neighborCellColorNumber = +$('.line' + i + ' .cell' + (j - 1)).attr("color");
+                    changeColor(carrentCell, neighborCellColorNumber, colors);
                 }
             };
 
-            for (var i = height - 1; i >= 0; i--) {
+            for (var i = height - 1; i > 0; i--) {
                 var carrentCell = $('.line' + i + ' .cell0');
-                if (i > 0) {
-                    var neighborCell = $('.line' + (i - 1) + ' .cell0');
-                    var neighborCellNumber = +neighborCell.attr("color");
-                    if (+carrentCell.attr("color") < neighborCellNumber) {
-                        carrentCell
-                            .css('background-color', colors[neighborCellNumber - 1])
-                            .attr("color", neighborCellNumber);
-                    }
-                }
+                var neighborCellColorNumber = +$('.line' + (i - 1) + ' .cell0').attr("color");
+                changeColor(carrentCell, neighborCellColorNumber, colors);
             };
 
-            for (var i = 0; i < height; i++) {
+            for (var i = 0; i < height-1; i++) {
                 var carrentCell = $('.line' + i + ' .cell0');
-                if (i < height - 1) {
-                    var neighborCell = $('.line' + (i + 1) + ' .cell0');
-                    var neighborCellNumber = +neighborCell.attr("color");
-                    if (+carrentCell.attr("color") < neighborCellNumber) {
-                        carrentCell
-                            .css('background-color', colors[neighborCellNumber - 1])
-                            .attr("color", neighborCellNumber);
-                    }
-                }
+                var neighborCellColorNumber = +$('.line' + (i + 1) + ' .cell0').attr("color");
+                changeColor(carrentCell, neighborCellColorNumber, colors);
             }
         };
+
+        function changeColor(carrentCell, neighborCellColorNumber, colors){        	
+            if (+carrentCell.attr("color") < neighborCellColorNumber) {
+                carrentCell
+                    .css('background-color', colors[neighborCellColorNumber - 1])
+                    .attr("color", neighborCellColorNumber);
+            }
+        }
     })();
 });
