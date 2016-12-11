@@ -13,25 +13,30 @@ $(document).ready(function () {
 
         var fieldWidth = 50;
         var fieldHeight = 20;
-        var fieldPause= 300;
+        var fieldPause= 1;
         var fieldColors = [];
 
+// 1) Field creation
         createField(fieldWidth, fieldHeight);
 
+// 2) Start of color changing
         var timerId = setInterval(function(){
             step(fieldWidth, fieldHeight, fieldColors);
         }, fieldPause);
 
+// 3) Handler of click: changing color of the cell on first column and on clicked line
         var i = 0;
         $('.waves').click({colors: fieldColors}, function(event){
             i++;
             event.data.colors.push(getRandomColor());
             var clickedLine = +event.target.id;
-
+            
             $('.line' + clickedLine + ' .cell' + 0)
                 .css('background-color', event.data.colors[i - 1])
                 .attr('color', i);
         });
+
+
 
         function getRandomColor () {
             return '#' + Math.random().toString(16).substr(-6);
@@ -48,21 +53,21 @@ $(document).ready(function () {
         };
 
         function step (width, height, colors) {
-
-            for (var i = height - 1; i >= 0; i--) {
+        	// Checking lines from right to left except first column
+            for (var i = 0; i < height; i++) {
                 for (var j = width - 1; j > 0; j--) {
                     var carrentCell = $('.line' + i + ' .cell' + j);
                     var neighborCellColorNumber = +$('.line' + i + ' .cell' + (j - 1)).attr("color");
                     changeColor(carrentCell, neighborCellColorNumber, colors);
                 }
             };
-
+            // Checking first column from down to up
             for (var i = height - 1; i > 0; i--) {
                 var carrentCell = $('.line' + i + ' .cell0');
                 var neighborCellColorNumber = +$('.line' + (i - 1) + ' .cell0').attr("color");
                 changeColor(carrentCell, neighborCellColorNumber, colors);
             };
-
+            // Checking first column from up to down
             for (var i = 0; i < height-1; i++) {
                 var carrentCell = $('.line' + i + ' .cell0');
                 var neighborCellColorNumber = +$('.line' + (i + 1) + ' .cell0').attr("color");
